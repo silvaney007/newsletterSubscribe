@@ -6,7 +6,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static('src'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -18,7 +18,7 @@ mailchimp.setConfig({
 
 app.get('/', function (req, res) {
 
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(__dirname + '/src/index.html')
 
 })
 
@@ -42,14 +42,14 @@ app.post('/', function (req, res) {
     }
 
 
-        res.sendFile(__dirname + '/sucess.html');
+        res.sendFile(__dirname + '/src/sucess.html');
 
-    run().catch(e => res.sendFile(__dirname + "/failure.html"));
+    run().catch(e => res.sendFile(__dirname + "/src/failure.html"));
 
 });
 
 
 
 app.listen(process.env.PORT || 3000, function () {
-    console.log('Server is running... on port 3000');
+    console.log('Server is running...');
 });
