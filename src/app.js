@@ -6,7 +6,7 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const app = express();
 
-app.use(express.static('src'));
+app.use(express.static('src/assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -18,7 +18,8 @@ mailchimp.setConfig({
 
 app.get('/', function (req, res) {
 
-    res.sendFile(__dirname + '/src/index.html')
+    res.sendFile(__dirname + '/index.html')
+    
 
 })
 
@@ -42,9 +43,9 @@ app.post('/', function (req, res) {
     }
 
 
-        res.sendFile(__dirname + '/src/sucess.html');
+        res.sendFile(__dirname + '/sucess.html');
 
-    run().catch(e => res.sendFile(__dirname + "/src/failure.html"));
+    run().catch(e => res.sendFile(__dirname + "/failure.html"));
 
 });
 
